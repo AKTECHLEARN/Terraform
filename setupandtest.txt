@@ -1,0 +1,73 @@
+#install terraform 
+# Update the package index
+sudo apt update
+
+# Install required dependencies
+sudo apt install -y wget unzip
+
+# Download Terraform
+wget https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
+
+# Unzip the downloaded archive
+unzip terraform_1.5.0_linux_amd64.zip
+
+# Move the Terraform binary to a directory in your PATH
+sudo mv terraform /usr/local/bin/
+
+# Verify the installation
+terraform -v
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+# azure cli installation
+
+# Install Azure CLI
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Verify installation
+az --version
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+# az login authentication
+
+# Log in to your Azure account
+az login
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+# file to create user
+
+
+# main.tf
+
+# Configure the Azure AD provider
+provider "azuread" {
+  tenant_id = "<your-tenant-id>"
+}
+
+# Configure the AzureRM provider
+provider "azurerm" {
+  features {}
+}
+
+# Create a new Azure AD user
+resource "azuread_user" "example" {
+  user_principal_name = "newuser@example.com"
+  display_name        = "New User"
+  mail_nickname       = "newuser"
+  password            = "Password123!"  # Set a strong password
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
